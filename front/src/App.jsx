@@ -1,38 +1,38 @@
-import { useState, useEffect } from 'react';
-import { getUserById } from './services/userService';
+import { useEffect, useState } from 'react';
+import { DEFAULT_USER_ID } from './config';
 import { useViewport } from './utils/Viewport';
-
+import { loadUserBundle } from './services/dataProvider';
+import Profile from './pages/Profile';
 function App() {
-  const [user, setUser] = useState(null);
   const { isOk, min } = useViewport();
+const [bundle, setBundle] = useState(null);
+const [error, setError] = useState(null);
 
-  useEffect(() => {
-    // Simule la récupération du user #12
-    const fetchedUser = getUserById(12);
-    setUser(fetchedUser);
+useEffect(() => {
+    loadUserBundle(DEFAULT_USER_ID)
+      .then(setBundle)
+      .catch((e) => setError(e));
   }, []);
 
- if (!isOk) {
+  // ——— UI guard: écran trop petit
+  if (!isOk) {
     return (
-      <div style={{ padding: '2rem' }}>
+      <main style={{ padding: 24 }}>
         <h2>Fenêtre trop petite</h2>
-        <p>
-          Veuillez utiliser une résolution d’au moins {min.width}×{min.height} px.
-        </p>
-      </div>
+        <p>Veuillez utiliser une résolution d’au moins {min.width}×{min.height}px.</p>
+      </main>
     );
   }
+
+  // ——— Loading / Error
+  if (error) return <main style={{ padding: 24 }}>Erreur : {String(error)}</main>;
+  if (!bundle) return <main style={{ padding: 24 }}>Chargement…</main>;
+
+  // ——— Page profil
   return (
-    <div style={{ padding: '2rem' }}>
-      {user ? (
-        <>
-          <h1>Bonjour <span style={{ color: '#FF0101' }}>{user.userInfos.firstName}</span></h1>
-          <p>Félicitations ! Vous avez explosé vos objectifs hier 👏</p>
-        </>
-      ) : (
-        <p>Chargement des données...</p>
-      )}
-    </div>
+    <main>
+      <Profile bundle={bundle} />
+    </main>
   );
 }
 
