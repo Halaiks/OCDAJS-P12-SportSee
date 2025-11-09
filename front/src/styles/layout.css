@@ -1,0 +1,33 @@
+:root{
+  --sidebar-w: clamp(80px, 6.67vw, 120px);
+  --header-h: clamp(56px, 5vw, 96px);
+  --gutter-x: clamp(64px, 6.25vw, 128px);
+  --gutter-y: clamp(48px, 4.72vw, 96px);
+}
+
+body {
+  background: #fff;
+}
+
+.dashboard__wrap {
+  margin-left: calc(var(--sidebar-w) + var(--gutter-x));
+  padding-top: calc(var(--header-h) + var(--gutter-y));
+  padding-bottom: var(--gutter-y);
+}
+
+.profile {
+  max-width: calc(var(--container-max) + var(--gutter-x)*2);
+  margin: 0 auto;
+  padding-left: var(--gutter-x);
+  padding-right: var(--gutter-x);
+}
+
+.profile__hero h1 {
+  margin: 0 0 8px 0;
+  font-size: clamp(32px, 3.33vw, 56px);
+  font-weight: 700;
+}
+
+.profile__hero .firstname {
+  color: #FF0101;
+}

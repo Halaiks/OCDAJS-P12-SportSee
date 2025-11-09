@@ -1,6 +1,6 @@
-import Header from '../components/Header';
-import Sidebar from '../components/Sidebar';
-import KpiCard from '../components/KpiCard';
+import Header from '../components/Header/Header';
+import Sidebar from '../components/Sidebar/Sidebar';
+import KpiCard from '../components/KpiCard/KpiCard';
 
 
 function Profile({ bundle }) {
@@ -14,7 +14,7 @@ function Profile({ bundle }) {
         <Sidebar />
 
         <section className="profile">
-          {/* Hero */}
+
           <header className="profile__hero">
             <h1>
               Bonjour <span style={{ color: '#FF0101' }}>{user.firstName}</span>
@@ -23,24 +23,22 @@ function Profile({ bundle }) {
             <small style={{ opacity: 0.6 }}>Data source: {source}</small>
           </header>
 
-          {/* Grille principale : charts + KPI */}
           <div className="profile__grid">
             <div className="profile__charts">
-              {/* Remplace progressivement ces placeholders par tes vrais charts Recharts */}
-              <div className="chart placeholder">BarChart – Activity ({activity.sessions.length} pts)</div>
+
+              <div className="chart placeholder">BarChart – Activity ({activity.sessions.length})</div>
               <div className="row">
-                <div className="chart placeholder">LineChart – Average ({average.sessions.length} pts)</div>
-                <div className="chart placeholder">RadarChart – Performance ({performance.data.length} pts)</div>
+                <div className="chart placeholder">LineChart – Average ({average.sessions.length})</div>
+                <div className="chart placeholder">RadarChart – Performance ({performance.data.length})</div>
                 <div className="chart placeholder">RadialBarChart – Score ({Math.round(user.score * 100)}%)</div>
               </div>
             </div>
 
             <aside className="profile__kpis">
-              {/* KPIs branchés sur user.keyData */}
-              <KpiCard icon="🔥" label="Calories"   value={`${user.keyData.calorieCount}kCal`} />
-              <KpiCard icon="🥩" label="Protéines"  value={`${user.keyData.proteinCount}g`} />
-              <KpiCard icon="🍞" label="Glucides"   value={`${user.keyData.carbohydrateCount}g`} />
-              <KpiCard icon="🧈" label="Lipides"    value={`${user.keyData.lipidCount}g`} />
+              <KpiCard label="Calories"   value={`${user.keyData.calorieCount}kCal`} />
+              <KpiCard label="Protéines"  value={`${user.keyData.proteinCount}g`} />
+              <KpiCard label="Glucides"   value={`${user.keyData.carbohydrateCount}g`} />
+              <KpiCard label="Lipides"    value={`${user.keyData.lipidCount}g`} />
             </aside>
           </div>
         </section>

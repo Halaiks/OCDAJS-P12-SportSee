@@ -10,10 +10,7 @@ import { ActivityModel } from '../models/ActivityModel';
 import { AverageSessionsModel } from '../models/AverageSessionsModel';
 import { PerformanceModel } from '../models/PerformanceModel';
 
-/**
- * Charge toutes les données utilisateur depuis le MOCK (temporaire).
- * Retourne un "bundle" formaté prêt pour les composants.
- */
+
 export async function loadUserBundle(userId) {
   const main = USER_MAIN_DATA.find(u => u.id === Number(userId));
   const activity = USER_ACTIVITY.find(u => u.userId === Number(userId));
