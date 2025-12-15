@@ -4,7 +4,7 @@ export class AverageSessionsModel {
     this.userId = raw.userId;
     this.sessions = (raw.sessions ?? []).map(s => ({
       day: s.day,
-      label: days[(s.day - 1) % 7],
+      dayLabel: days[(s.day - 1) % 7],
       sessionLength: s.sessionLength,
     }));
   }

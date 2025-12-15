@@ -2,6 +2,7 @@
   width: 100%;
   background: #020203;
   padding: clamp(14px, 1.25vw, 24px) clamp(64px, 6.25vw, 128px) clamp(14px, 1.25vw, 24px) clamp(20px, 2vw, 40px); 
+z-index: 9999;
 }
 
 .header__inner {
@@ -15,6 +16,7 @@
   height: clamp(48px, 4.2vw, 80px);
   width: auto;
   object-fit: contain;
+  z-index: 10000;
 }
 
 .nav {

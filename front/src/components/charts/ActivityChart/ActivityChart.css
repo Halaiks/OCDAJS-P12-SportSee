@@ -1,0 +1,52 @@
+
+.activity-card {
+  position: relative;
+  background: #fbfbfb;
+  border-radius: 5px;
+  padding: 24px 32px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.activity-card__title {
+  position: absolute;
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+  color: #20253A;
+}
+
+.activity-card__chart {
+  position: relative;
+  z-index: 0;
+}
+
+.activity-tooltip {
+  background: #E60000;
+  color: #fff;
+  padding: 4px 8px;
+  font-size: 10px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.activity-tooltip p {
+  margin: 0;
+}
+
+/* Personnalisation de la légende Recharts */
+.activity-card .recharts-legend-item-text {
+  color: #74798C !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+}
+/* Corrige l’ordre visuel de la légende Recharts */
+.activity-card .recharts-default-legend {
+  display: flex;
+  flex-direction: row-reverse; /* 🔥 clé du fix */
+  gap: 24px;
+}
+
+.activity-card *:focus {
+  outline: none !important;
+}
+

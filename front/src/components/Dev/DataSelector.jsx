@@ -12,7 +12,7 @@ function DataSelector({ onChange }) {
   return (
     <div style={{
       position: 'fixed',
-      top: 12,
+      bottom: 12,
       right: 12,
       background: '#fafafa',
       border: '1px solid #ccc',

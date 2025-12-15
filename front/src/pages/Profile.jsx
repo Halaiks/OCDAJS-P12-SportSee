@@ -1,6 +1,11 @@
 import Header from '../components/Header/Header';
 import Sidebar from '../components/Sidebar/Sidebar';
 import KpiCard from '../components/KpiCard/KpiCard';
+import ActivityChart from '../components/charts/ActivityChart/ActivityChart';
+import AverageSessionsChart from '../components/charts/AverageSessionsChart/AverageSessionsChart';
+import PerformanceRadarChart from '../components/charts/PerformanceRadarChart/PerformanceRadarChart'
+import ScoreChart from '../components/charts/ScoreChart/ScoreChart';
+
 
 
 function Profile({ bundle }) {
@@ -26,11 +31,19 @@ function Profile({ bundle }) {
           <div className="profile__grid">
             <div className="profile__charts">
 
-              <div className="chart placeholder">BarChart – Activity ({activity.sessions.length})</div>
+              <div className="chart chart--activity">
+              <ActivityChart sessions={activity.sessions} />
+            </div>
               <div className="row">
-                <div className="chart placeholder">LineChart – Average ({average.sessions.length})</div>
-                <div className="chart placeholder">RadarChart – Performance ({performance.data.length})</div>
-                <div className="chart placeholder">RadialBarChart – Score ({Math.round(user.score * 100)}%)</div>
+                <div className="chart">
+   <AverageSessionsChart sessions={average.sessions} />
+  </div>
+ <div className="chart">
+    <PerformanceRadarChart data={performance.data} />
+  </div>
+                <div className="chart">
+  <ScoreChart score={user.score} />
+</div>
               </div>
             </div>
 
